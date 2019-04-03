@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+# display usage
+[ $# -eq 0 ] && { echo "Usage: $0 <File Name without extension> ";exit 1; }
+`rm -f $1.exe $1`
+#`yasm -f elf64 $1.asm`
+`as -o $1.o $1.s`
+`gcc -s -o $1.exe $1.o -fpic -shared`
+`ld -s -o $1 $1.o -pie -lc --dynamic-linker /system/bin/linker64 -e main -shared`
+[ -e $1.exe ] && { file $1.exe;exec ./$1.exe ¦¦ true; }
+[ -e $1 ] && { file $1;exec ./$1 ¦¦ true;}
