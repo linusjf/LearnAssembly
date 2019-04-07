@@ -5,6 +5,6 @@ set +e
 `rm -f $1.exe $1.o`
 `as -o $1.o $1.s`
 [ -e $1.o ] && { file $1.o;}
-`gcc -s -o $1.exe $1.o -fpic`
+`gcc -v -s -o $1.exe $1.o -fpic`
 [ -e $1.exe ] && { file $1.exe;nohup ./$1.exe; }
 set -e
