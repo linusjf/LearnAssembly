@@ -2,6 +2,7 @@
 !*/
 !*.*
 !buildrun
+!build
 *.exe
 *.o
 *.*~
