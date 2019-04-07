@@ -2,12 +2,14 @@
 # display usage
 [ $# -eq 0 ] && { echo "Usage: $0 <File Name without extension> ";exit 1; }
 set +e
-`rm -f $1.exe $1`
+`rm -f $1.exe $1 $1.o`
 #`yasm -f elf64 $1.asm`
 `as -o $1.o $1.s`
 [ -e $1.o ] && { file $1.o;}
-`gcc -s -o $1.exe $1.o -fpic -shared`
-`ld -s -o $1 $1.o -pie -lc --dynamic-linker /system/bin/linker64 -e main -shared`
-[ -e $1.exe ] && { file $1.exe;nohup ./$1.exe; } 
-[ -e $1 ] && { file $1;nohup ./$1;} 
+#`gcc -s -o $1.exe $1.o -fpic -shared`
+#`ld -s -o $1 $1.o -pie -lc --dynamic-linker /system/bin/linker64 -e main -shared`
+`gcc -s -o $1.exe $1.o -fpic`
+`ld -s -o $1 $1.o -pie -e main --dynamic-linker /system/bin/linker64 -lc /system/bin/linker64`
+[ -e $1.exe ] && { file $1.exe;nohup ./$1.exe; }
+[ -e $1 ] && { file $1;nohup ./$1;}
 set -e
