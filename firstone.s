@@ -4,4 +4,7 @@
 
  main:
       mov w0, #2
-	       ret
+	//ret
+      mov w7, #1
+//      svc #0
+	ret
