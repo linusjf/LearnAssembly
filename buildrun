@@ -6,8 +6,8 @@ set +e
 `as -o $1.o $1.s`
 [ -e $1.o ] && { file $1.o;}
 [ ! -z $2 ] && { objcopy --redefine-sym $2=main $1.o; }
-`gcc -s -o $1.exe $1.o -fpic`
-`ld -s -o $1  -pie --dynamic-linker /system/bin/linker64 /data/data/com.termux/files/usr/lib/crtbegin_dynamic.o  $1.o -lc -lgcc -ldl /data/data/com.termux/files/usr/lib/crtend_android.o`
+`gcc -v -Wall -s -o $1.exe $1.o -pie -fpic`
+`ld -s -o $1 -pie --dynamic-linker /system/bin/linker64 /data/data/com.termux/files/usr/lib/crtbegin_dynamic.o  $1.o -lc -lgcc -ldl /data/data/com.termux/files/usr/lib/crtend_android.o`
 [ -e $1.exe ] && { file $1.exe;nohup ./$1.exe; }
 [ -e $1 ] && { file $1;nohup ./$1;}
 set -e

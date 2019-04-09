@@ -1,20 +1,23 @@
 .data
-string: .asciz "Azeria Labs\n"  //.asciz adds a null-byte to the end of the string
-after_string:
-.set size_of_string, after_string - string
-
+.balign 8
+labs: .asciz "Azeria Labs\n"  //.asciz adds a null-byte to the end of the string
+.balign 8
+after_labs:
+.set size_of_labs, after_labs - labs
+.balign 8
+addr_of_labs: .dword labs
+.balign 8
 .text
 .global main
 
 main:
-   mov w0, #1               //STDOUT
-   ldr w1, addr_of_string   //memory address of string
-   mov w2, #size_of_string  //size of string
-   mov w7, #4              //write syscall
-   svc #0                   // invoke syscall
+  mov x0, #1               //STDOUT
+  ldr x1,addr_of_labs   //memory address of labs
+   mov w2, #13 //size of labs
+  mov x8,#64
+  svc #0x0                  // invoke syscall
 
 _exit:
-   mov w7, #1               //exit syscall
-   svc 0                    //invoke syscall
-
-addr_of_string: .word string
+  mov x8, #93               //exit syscall
+   svc #0x0                 //invoke syscall
+//ret
