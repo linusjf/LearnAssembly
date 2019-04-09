@@ -1,5 +1,5 @@
 .text
-.globl main
+.global main
 main:
 		mov w0, #2
 		ret

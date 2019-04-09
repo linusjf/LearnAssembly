@@ -3,6 +3,6 @@
 .type main , % function
 main: /* Address of the main function */
 /* Program code would go here */
-/**	MOV W0,#3
-	BR LR  **/
+	MOV W0,#3
+	ret
 .end /* End of the program */

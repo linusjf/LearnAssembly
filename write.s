@@ -13,11 +13,10 @@ addr_of_labs: .dword labs
 main:
   mov x0, #1               //STDOUT
   ldr x1,addr_of_labs   //memory address of labs
-   mov w2, #13 //size of labs
+   mov w2, #size_of_labs //size of labs
   mov x8,#64
   svc #0x0                  // invoke syscall
 
 _exit:
   mov x8, #93               //exit syscall
    svc #0x0                 //invoke syscall
-//ret
