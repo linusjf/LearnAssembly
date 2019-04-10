@@ -5,6 +5,11 @@ set +e
 `rm -f $1 $1.o`
 `as -o $1.o $1.s`
 [ -e $1.o ] && { file $1.o; ls -l $1.o;}
-`ld $1.o -o $1`
+x='_start'
+if [ ! -z $2 ]
+then
+	x=$2
+fi
+`ld -e $x -s $1.o -o $1`
 [ -e $1 ] && { file $1;ls -l $1;nohup ./$1;}
 set -e
