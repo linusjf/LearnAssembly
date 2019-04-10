@@ -1,7 +1,10 @@
 #include <stdio.h>
-int main (int argc, char **argv)
+#include <stdlib.h>
+int main (int argc, char *argv[])
 {
-for (int i = argc-1; i > 0; --i)
-		printf("%s",argv[i]);
-return 0;
+    int sum = 0;
+    for(char **entry = &argv[1]; *entry != argv[argc];entry++)
+		sum += printf("%s\t",*entry);
+    sum += printf("\n");
+    exit(sum);
 }

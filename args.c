@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-int main (int argc, char **argv)
+int main (int argc, char *argv[])
 {
-  int sum = 0;
-for (int i = argc-1; i > 0; --i)
-		sum += atoi(argv[i]);
-	exit(sum);
+    int sum = 0;
+for(char **entry = &argv[1]; *entry != argv[argc];entry++)
+    sum += atoi(*entry);
+exit(sum);
 }
