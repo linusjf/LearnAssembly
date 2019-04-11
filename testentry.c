@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 int main();
 int test(void)
 {
 printf("Hello\n");
-main();
-return 1;
+exit(main());
+
 }
 
 

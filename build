@@ -1,10 +1,9 @@
 #! /usr/bin/env bash
 # display usage
+# creates dynamic executable without start and standard library functions.
 [ $# -eq 0 ] && { echo "Usage: $0 <File Name without extension> ";exit 1; }
 set +e
-`rm -f $1.exe $1.o`
-`as -o $1.o $1.s`
-[ -e $1.o ] && { file $1.o;}
-`gcc -v -s -o $1.exe $1.o -fpic`
+[ -e $1.s ] && { rm  $1.exe; }
+gcc -nostartfiles -nostdlib -nodefaultlibs $1.s -o $1.exe
 [ -e $1.exe ] && { file $1.exe;nohup ./$1.exe; }
 set -e

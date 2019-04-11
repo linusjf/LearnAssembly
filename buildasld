@@ -1,5 +1,6 @@
 #! /usr/bin/env bash
 # display usage
+# This build file creates statically linked executables.
 [ $# -eq 0 ] && { echo "Usage: $0 <File Name without extension> <name of entry function>";exit 1; }
 set +e
 [ -e $1.s ] && { rm $1 $1.o;}

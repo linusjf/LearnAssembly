@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+# display usage
+# creates dynamic executable from C file converting to assembly first.
+[ $# -eq 0 ] && { echo "Usage: $0 <File Name without extension> ";exit 1; }
+gcc -S $1.c
+./buildrun $1

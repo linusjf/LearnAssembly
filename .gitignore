@@ -4,6 +4,7 @@
 !buildrun
 !build
 !buildasld
+!buildc
 *.exe
 *.o
 *.*~
