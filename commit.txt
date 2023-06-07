@@ -1,1 +1,1 @@
-docs: add hits of code badge
+fix: ignore commit.txt
